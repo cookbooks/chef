@@ -32,6 +32,8 @@ dependency "chef", :immediate=>true unless defined?(Chef)
 
 use_template_engine :haml
 
+Chef::Config.from_file("/etc/chef/server.rb")
+
 Merb::Config.use do |c|
   # BUGBUG [cb] For some reason, this next line
   # causes a merb slice to vomit around openid
@@ -48,5 +50,3 @@ Merb::Config.use do |c|
 end
 
 # make sure to load the chef server config when using config.ru
-
-Chef::Config.from_file("/etc/chef/server.rb")
